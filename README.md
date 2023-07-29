@@ -55,10 +55,14 @@ Is responsible for:
 
 ## SPring Boot
 
-## Spring MVC
-
 ## Spring Data
 
-## Spring ORM
+## Spring MVC
+
+## Spring Security
+
+## Spring AOP
+
+## Spring Testing
 
 ## Spring RESTful Web Services
