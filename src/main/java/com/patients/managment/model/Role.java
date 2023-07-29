@@ -1,6 +1,6 @@
 package com.patients.managment.model;
 
-public enum Rol {
+public enum Role {
     PATIENT,
     DOCTOR,
 }

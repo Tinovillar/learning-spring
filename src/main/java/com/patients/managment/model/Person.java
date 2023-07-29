@@ -25,6 +25,6 @@ public class Person {
         private String description;
         @Column(name = "insurance")
         private String insurance;
-        @Column(name = "rol")
-        private Rol rol;
+        @Column(name = "role")
+        private Role role;
 }

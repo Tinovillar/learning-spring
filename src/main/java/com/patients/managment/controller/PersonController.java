@@ -1,17 +1,15 @@
 package com.patients.managment.controller;
 
-import com.patients.managment.model.Person;
-import com.patients.managment.model.Rol;
-import com.patients.managment.repository.PersonRepository;
+import com.patients.managment.dto.PersonRequest;
+import com.patients.managment.dto.PersonResponse;
+import com.patients.managment.model.Role;
 import com.patients.managment.service.PersonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/person")
@@ -23,37 +21,37 @@ public class PersonController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("")
-    public List<Person> findAll() {
+    public List<PersonResponse> findAll() {
         return personService.findAll();
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/filter/rol/{rol}")
-    public List<Person> findByRol(@PathVariable Rol rol) {
-        return personService.findAllByRol(rol);
+    @GetMapping("/filter/role/{role}")
+    public List<PersonResponse> findByRol(@PathVariable Role role) {
+        return personService.findAllByRol(role);
     }
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{id}")
-    public Optional<Person> findById(@PathVariable Long id) {
+    public PersonResponse findById(@PathVariable Long id) {
         return personService.findById(id);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
-    public void addPerson(@RequestBody Person person) {
-        personService.addPerson(person);
+    public void addPerson(@RequestBody PersonRequest personRequest) {
+        personService.addPerson(personRequest);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("")
-    public Optional<Person> updatePerson(@RequestBody Person person, Long id) {
-        return personService.updatePerson(person, id);
+    public PersonResponse updatePerson(@RequestBody PersonRequest personRequest, Long id) {
+        return personService.updatePerson(personRequest, id);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
-    public Optional<Person> deletePerson(@PathVariable Long id) {
+    public PersonResponse deletePerson(@PathVariable Long id) {
         return personService.deletePerson(id);
     }
 }
